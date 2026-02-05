@@ -1,18 +1,12 @@
 kind: pipeline
 type: docker
-name: batman-gadget-test
+name: task-6-parameters
 
 steps:
-- name: task-4-checkout-proof
-  image: alpine
-  commands:
-  - ls -la  # Shows gadget_test.py in the workspace (Task 4 Proof)
-
-- name: task-3-and-5-run-test
+- name: run-parameterized-test
   image: python:3.9-slim
+  environment:
+    GADGET_NAME: "Batarang"  # This is your parameter
   commands:
-  - python gadget_test.py  # Runs your code (Task 3 & 5 Proof)
-
-trigger:
-  event:
-  - push  # Triggers automatically on GitHub commit (Task 5)
+  - echo "Current Gadget being tested is $${GADGET_NAME}"
+  - python gadget_test.py
