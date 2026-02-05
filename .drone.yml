@@ -3,13 +3,18 @@ type: docker
 name: default
 
 steps:
-- name: task-12-remote
+- name: task-12-git-check
   image: alpine
   commands:
   - git remote -v
-  - echo "Task 12 Verified"
+  - echo "Remote Repo Verified for Task 12"
 
-- name: task-3-test
+- name: task-3-gadget-test
   image: python:3.9-slim
   commands:
   - python gadget_test.py
+
+- name: task-14-cleanup-info
+  image: alpine
+  commands:
+  - echo "Drone auto-cleans workspace after this step."
