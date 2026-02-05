@@ -1,26 +1,18 @@
 kind: pipeline
 type: docker
-name: batman-assignment-pipeline
+name: batman-gadget-test
 
 steps:
-- name: task-4-git-clone-check
+- name: task-4-checkout-proof
   image: alpine
   commands:
-  - ls -R  # TASK 4: Shows the code was successfully pulled from GitHub
+  - ls -la  # Shows gadget_test.py in the workspace (Task 4 Proof)
 
-- name: task-3-workspace-test
-  image: alpine
+- name: task-3-and-5-run-test
+  image: python:3.9-slim
   commands:
-  - pwd  # TASK 3.1: Show current path
-  - echo "Batman's Secret File" > mission_report.txt # TASK 3.2: Create file
-  - cat mission_report.txt # TASK 3.3: Display file contents
-
-- name: task-5-trigger-check
-  image: alpine
-  commands:
-  - echo "Build triggered automatically at $(date)"
-  - echo "Repo Name: IamBatman"
+  - python gadget_test.py  # Runs your code (Task 3 & 5 Proof)
 
 trigger:
   event:
-  - push # TASK 5: This acts as your 'Poll SCM' trigger
+  - push  # Triggers automatically on GitHub commit (Task 5)
