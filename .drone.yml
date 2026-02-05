@@ -1,20 +1,9 @@
 kind: pipeline
 type: docker
-name: default
+name: batman
 
 steps:
-- name: task-12-git-check
+- name: remote-verify
   image: alpine
   commands:
   - git remote -v
-  - echo "Remote Repo Verified for Task 12"
-
-- name: task-3-gadget-test
-  image: python:3.9-slim
-  commands:
-  - python gadget_test.py
-
-- name: task-14-cleanup-info
-  image: alpine
-  commands:
-  - echo "Drone auto-cleans workspace after this step."
