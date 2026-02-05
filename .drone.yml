@@ -1,19 +1,29 @@
 kind: pipeline
 type: docker
-name: batman-pipeline-with-notif
+name: batman-pipeline
 
 steps:
-- name: test-gadget
+- name: task-10-build-stage
+  image: alpine
+  commands:
+  - echo "Building Gadgets..."
+  - ls -la
+
+- name: task-3-and-5-test-stage
   image: python:3.9-slim
   commands:
   - python gadget_test.py
 
-- name: notify-batman
-  image: drillster/drone-email
-  settings:
-    host: smtp.gmail.com
-    port: 587
-    from: batcave-ci@gmail.com
-    recipients: [ your-email@example.com ]
+- name: task-11-notification-logic
+  image: alpine
+  commands:
+  - echo "Build Status is COMPLETE. Sending notification to Bat-Cave..."
   when:
-    status: [ success, failure ] # TASK 11.2: Send mail on any status
+    status:
+    - success
+    - failure
+
+trigger:
+  event:
+    - push
+    - cron
