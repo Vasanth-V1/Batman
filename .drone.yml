@@ -1,14 +1,26 @@
 kind: pipeline
-type: docker  # This tells the Master to find a 'Docker Runner' (Slave)
-name: task-9-node-management
-
-platform:
-  os: linux
-  arch: amd64
+type: docker
+name: batman-pipeline
 
 steps:
-- name: check-node-info
+- name: task-4-git-verify
   image: alpine
   commands:
-  - uname -a  # This command displays the details of the 'Slave' node
-  - echo "Task 9: Master-Slave communication verified on IamBatman repo"
+  - ls -la
+
+- name: task-3-and-5-run
+  image: python:3.9-slim
+  commands:
+  - python gadget_test.py
+
+- name: task-6-parameter
+  image: alpine
+  environment:
+    GADGET_NAME: Batarang
+  commands:
+  - echo "Testing gadget variable $${GADGET_NAME}"
+
+trigger:
+  event:
+    - push
+    - cron
