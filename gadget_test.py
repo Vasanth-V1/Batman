@@ -6,7 +6,7 @@ def check_batarangs():
 def check_batmobile_fuel():
     fuel_level = 100
     print(f"Fuel level: {fuel_level}%")
-    assert fuel_level > 10  # This will pass
+    assert fuel_level = 10  # This will pass
 
 if __name__ == "__main__":
     check_batarangs()
