@@ -1,9 +1,11 @@
 kind: pipeline
 type: docker
-name: hello-drone-job
+name: task-3-workspace-check
 
 steps:
-- name: print-message
+- name: create-file
   image: alpine
   commands:
-  - echo "Hello Jenkins"
+  - echo "This file was created in the Batman/Drone workspace" > assignment.txt
+  - ls -l  # This shows the file exists in the directory
+  - cat assignment.txt  # This displays the content in the console
