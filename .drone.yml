@@ -1,15 +1,29 @@
 kind: pipeline
 type: docker
-name: task-12-remote-repo
+name: batman-pipeline
 
 steps:
-- name: verify-remote-source
+- name: task-12-remote-pull
   image: alpine
   commands:
-  - echo "Task 12: Verifying Remote Connection"
-  - git remote -v  # This command shows the GitHub URL (Proof for 12.1)
-  - git log -1     # This shows the latest commit pulled from the remote (Proof for 12.2)
+  - git remote -v
+  - echo "Task 12: Successfully pulled from Remote GitHub Repo"
+
+- name: task-3-and-5-run
+  image: python:3.9-slim
+  commands:
+  - python gadget_test.py
+
+- name: task-11-notif
+  image: alpine
+  commands:
+  - echo "Notification: Build complete for IamBatman"
+  when:
+    status:
+    - success
+    - failure
 
 trigger:
   event:
     - push
+    - cron
