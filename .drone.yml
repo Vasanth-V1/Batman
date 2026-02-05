@@ -1,24 +1,24 @@
 kind: pipeline
 type: docker
-name: batman-pipeline
+name: batman-full-pipeline
 
 steps:
-- name: task-4-git-verify
+- name: stage-1-build
   image: alpine
   commands:
-  - ls -la
+  - echo "Building Batman Gadgets..."
+  - ls -la # Task 4: Git check
 
-- name: task-3-and-5-run
+- name: stage-2-test
   image: python:3.9-slim
   commands:
-  - python gadget_test.py
+  - python gadget_test.py # Task 3: Command execution
 
-- name: task-6-parameter
+- name: stage-3-deploy
   image: alpine
-  environment:
-    GADGET_NAME: Batarang
   commands:
-  - echo "Testing gadget variable $${GADGET_NAME}"
+  - echo "Deploying to Bat-Cave server..."
+  - echo "Task 10 Pipeline Complete!"
 
 trigger:
   event:
