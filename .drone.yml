@@ -3,25 +3,16 @@ type: docker
 name: batman-pipeline
 
 steps:
-- name: task-12-remote-pull
+- name: task-12-remote-verification
   image: alpine
   commands:
   - git remote -v
-  - echo "Task 12: Successfully pulled from Remote GitHub Repo"
+  - echo "Task 12: Remote Repository Pulled Successfully"
 
-- name: task-3-and-5-run
+- name: task-3-gadget-execution
   image: python:3.9-slim
   commands:
   - python gadget_test.py
-
-- name: task-11-notif
-  image: alpine
-  commands:
-  - echo "Notification: Build complete for IamBatman"
-  when:
-    status:
-    - success
-    - failure
 
 trigger:
   event:
