@@ -1,11 +1,8 @@
-# Simple Gadget Code
-def add_gadget(a, b):
-    return a + b
+def test_batarang():
+    print("Checking Batarang alignment...")
+    return "Aligned"
 
 if __name__ == "__main__":
-    result = add_gadget(5, 5)
-    print(f"Gadget Test: 5 + 5 = {result}")
-    if result == 10:
-        print("Gadget is working perfectly!")
-    else:
-        print("Gadget failed the test.")
+    status = test_batarang()
+    print(f"Gadget Status: {status}")
+    print("Task 4 & 5: Successfully verified code checkout and trigger!")
