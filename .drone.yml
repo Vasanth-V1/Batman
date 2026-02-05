@@ -1,17 +1,9 @@
 kind: pipeline
 type: docker
-name: bat-computer-checks
+name: bat-computer-diagnostics
 
 steps:
-- name: equipment-check
+- name: internal-tests
   image: python:3.9-slim
   commands:
-  - echo "Starting Bat-Computer Diagnostics..."
-  - python --version
-  - echo "Checking Batmobile fuel levels... 100%"
-  - echo "Checking Batarang inventory... Ready."
-
-- name: build-report
-  image: alpine
-  commands:
-  - echo "All systems go. Gotham is safe."
+  - python gadget_test.py
