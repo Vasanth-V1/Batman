@@ -1,19 +1,15 @@
 kind: pipeline
 type: docker
-name: batman-pipeline
+name: default
 
 steps:
-- name: task-12-git-check
+- name: task-12-remote
   image: alpine
   commands:
   - git remote -v
-  - echo "Remote Repo Verified"
+  - echo "Task 12 Verified"
 
-- name: task-3-gadget-test
+- name: task-3-test
   image: python:3.9-slim
   commands:
   - python gadget_test.py
-
-trigger:
-  event:
-    - push
