@@ -1,15 +1,14 @@
 kind: pipeline
 type: docker
-name: task-3-workspace
+name: task-5-automatic-trigger
 
 steps:
-- name: create-step
+- name: check-code-change
   image: alpine
   commands:
-  - pwd  # This shows the workspace path (Task 3.1)
-  - echo "Batman's Secret Report" > report.txt # (Task 3.2)
+  - echo "Task 5: Webhook detected a code change in IamBatman repo!"
+  - date  # Shows exactly when the build was triggered
 
-- name: display-step
-  image: alpine
-  commands:
-  - cat report.txt # (Task 3.3)
+trigger:
+  event:
+  - push  # This is the modern equivalent of "Polling"
