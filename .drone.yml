@@ -1,12 +1,22 @@
 kind: pipeline
 type: docker
-name: task-6-parameters
+name: batman-pipeline
 
 steps:
-- name: run-parameterized-test
+- name: task-3-and-4
   image: python:3.9-slim
-  environment:
-    GADGET_NAME: "Batarang"  # This is your parameter
   commands:
-  - echo "Current Gadget being tested is $${GADGET_NAME}"
+  - ls -la
   - python gadget_test.py
+
+- name: task-6-parameters
+  image: alpine
+  environment:
+    GADGET_NAME: Batarang
+  commands:
+  - echo "Testing gadget: $${GADGET_NAME}"
+
+trigger:
+  event:
+  - push
+  - cron
