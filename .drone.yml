@@ -1,25 +1,26 @@
 kind: pipeline
 type: docker
-name: Project-A-Build  # This is the "Upstream" job
+name: batman-pipeline
 
 steps:
-- name: compile-gadget
+- name: task-4-checkout
   image: alpine
   commands:
-  - echo "Project A: Compiling Batman's gadget..."
-  - sleep 5
+  - ls -la  # Proves code is in workspace
 
----
-kind: pipeline
-type: docker
-name: Project-B-Test   # This is the "Downstream" job
-
-steps:
-- name: test-gadget
+- name: task-3-and-5-run
   image: python:3.9-slim
   commands:
-  - echo "Project B: Triggered because Project A was successful!"
-  - python gadget_test.py
+  - python gadget_test.py  # Runs your gadget
 
-depends_on:
-- Project-A-Build  # This creates the link between Project A and B
+- name: task-6-parameter
+  image: alpine
+  environment:
+    GADGET_NAME: Batarang
+  commands:
+  - echo "Testing gadget variable $${GADGET_NAME}"
+
+trigger:
+  event:
+    - push
+    - cron
