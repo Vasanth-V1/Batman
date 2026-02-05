@@ -1,1 +1,10 @@
+kind: pipeline
+type: docker
+name: batman-build
 
+steps:
+- name: welcome
+  image: alpine
+  commands:
+  - echo "I am Batman... and my CI/CD is working!"
+  - echo "Drone is running inside a Docker container on Windows 11."
