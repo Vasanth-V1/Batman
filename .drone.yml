@@ -7,4 +7,4 @@ steps:
   image: alpine
   commands:
   - echo "I am Batman... and my CI/CD is working!"
-  - echo "Drone is running inside a Docker container on Windows 11."
+  - echo "Triggered by Vasanth at $(date)"
