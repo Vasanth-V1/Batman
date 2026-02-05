@@ -1,9 +1,9 @@
 kind: pipeline
 type: docker
-name: batman
+name: final-check
 
 steps:
-- name: remote-verify
+- name: simple-log
   image: alpine
   commands:
-  - git remote -v
+  - echo "Lab Complete"
