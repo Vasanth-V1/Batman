@@ -1,16 +1,15 @@
 kind: pipeline
 type: docker
-name: task-3-workspace-commands
+name: task-3-workspace
 
 steps:
-- name: create-and-list
+- name: create-step
   image: alpine
   commands:
-  - pwd  # TASK 3.1: Navigate/Show current workspace path
-  - echo "Assignment Task 3: File successfully created by Vasanth" > build_report.txt # TASK 3.2: Create a text file
-  - ls -l # Proof of file creation in workspace
+  - pwd  # This shows the workspace path (Task 3.1)
+  - echo "Batman's Secret Report" > report.txt # (Task 3.2)
 
-- name: display-content
+- name: display-step
   image: alpine
   commands:
-  - cat build_report.txt # TASK 3.3: Display file contents in console
+  - cat report.txt # (Task 3.3)
