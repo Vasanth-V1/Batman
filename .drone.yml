@@ -1,11 +1,16 @@
 kind: pipeline
 type: docker
-name: task-3-workspace-check
+name: task-3-workspace-commands
 
 steps:
-- name: create-file
+- name: create-and-list
   image: alpine
   commands:
-  - echo "This file was created in the Batman/Drone workspace" > assignment.txt
-  - ls -l  # This shows the file exists in the directory
-  - cat assignment.txt  # This displays the content in the console
+  - pwd  # TASK 3.1: Navigate/Show current workspace path
+  - echo "Assignment Task 3: File successfully created by Vasanth" > build_report.txt # TASK 3.2: Create a text file
+  - ls -l # Proof of file creation in workspace
+
+- name: display-content
+  image: alpine
+  commands:
+  - cat build_report.txt # TASK 3.3: Display file contents in console
