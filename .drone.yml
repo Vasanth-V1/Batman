@@ -1,15 +1,15 @@
 kind: pipeline
 type: docker
-name: batman-pipeline
+name: batman-assignment
 
 steps:
-- name: task-12-remote-verification
+- name: task-12-remote-repo
   image: alpine
   commands:
   - git remote -v
-  - echo "Task 12: Remote Repository Pulled Successfully"
+  - echo "Task 12: Remote Repository Verification Successful"
 
-- name: task-3-gadget-execution
+- name: task-3-gadget-run
   image: python:3.9-slim
   commands:
   - python gadget_test.py
