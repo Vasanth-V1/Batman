@@ -1,10 +1,17 @@
 kind: pipeline
 type: docker
-name: batman-build
+name: bat-computer-checks
 
 steps:
-- name: welcome
+- name: equipment-check
+  image: python:3.9-slim
+  commands:
+  - echo "Starting Bat-Computer Diagnostics..."
+  - python --version
+  - echo "Checking Batmobile fuel levels... 100%"
+  - echo "Checking Batarang inventory... Ready."
+
+- name: build-report
   image: alpine
   commands:
-  - echo "I am Batman... and my CI/CD is working!"
-  - echo "Triggered by Vasanth at $(date)"
+  - echo "All systems go. Gotham is safe."
