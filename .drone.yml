@@ -1,29 +1,15 @@
 kind: pipeline
 type: docker
-name: batman-pipeline
+name: task-12-remote-repo
 
 steps:
-- name: task-10-build-stage
+- name: verify-remote-source
   image: alpine
   commands:
-  - echo "Building Gadgets..."
-  - ls -la
-
-- name: task-3-and-5-test-stage
-  image: python:3.9-slim
-  commands:
-  - python gadget_test.py
-
-- name: task-11-notification-logic
-  image: alpine
-  commands:
-  - echo "Build Status is COMPLETE. Sending notification to Bat-Cave..."
-  when:
-    status:
-    - success
-    - failure
+  - echo "Task 12: Verifying Remote Connection"
+  - git remote -v  # This command shows the GitHub URL (Proof for 12.1)
+  - git log -1     # This shows the latest commit pulled from the remote (Proof for 12.2)
 
 trigger:
   event:
     - push
-    - cron
