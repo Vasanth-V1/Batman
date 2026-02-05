@@ -1,14 +1,26 @@
 kind: pipeline
 type: docker
-name: task-5-automatic-trigger
+name: batman-assignment-pipeline
 
 steps:
-- name: check-code-change
+- name: task-4-git-clone-check
   image: alpine
   commands:
-  - echo "Task 5: Webhook detected a code change in IamBatman repo!"
-  - date  # Shows exactly when the build was triggered
+  - ls -R  # TASK 4: Shows the code was successfully pulled from GitHub
+
+- name: task-3-workspace-test
+  image: alpine
+  commands:
+  - pwd  # TASK 3.1: Show current path
+  - echo "Batman's Secret File" > mission_report.txt # TASK 3.2: Create file
+  - cat mission_report.txt # TASK 3.3: Display file contents
+
+- name: task-5-trigger-check
+  image: alpine
+  commands:
+  - echo "Build triggered automatically at $(date)"
+  - echo "Repo Name: IamBatman"
 
 trigger:
   event:
-  - push  # This is the modern equivalent of "Polling"
+  - push # TASK 5: This acts as your 'Poll SCM' trigger
