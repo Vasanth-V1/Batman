@@ -1,15 +1,11 @@
-def check_batarangs():
-    stock = 5
-    print(f"Batarang count: {stock}")
-    assert stock > 0  # This will pass
-
-def check_batmobile_fuel():
-    fuel_level = 100
-    print(f"Fuel level: {fuel_level}%")
-    assert fuel_level > 10  # This will pass
+# Simple Gadget Code
+def add_gadget(a, b):
+    return a + b
 
 if __name__ == "__main__":
-    check_batarangs()
-    check_batmobile_fuel()
-    print("Bat-Computer: All systems are green!")
-#triggering task 5
+    result = add_gadget(5, 5)
+    print(f"Gadget Test: 5 + 5 = {result}")
+    if result == 10:
+        print("Gadget is working perfectly!")
+    else:
+        print("Gadget failed the test.")
