@@ -1,8 +1,9 @@
+# Batman's Gadget Testing Suite
 def test_batarang():
-    print("Checking Batarang alignment...")
-    return "Aligned"
+    print("Testing Batarang aerodynamics...")
+    return "SUCCESS"
 
 if __name__ == "__main__":
-    status = test_batarang()
-    print(f"Gadget Status: {status}")
-    print("Task 4 & 5: Successfully verified code checkout and trigger!")
+    result = test_batarang()
+    print(f"Gadget Test Result: {result}")
+    print("Code checkout and trigger verified for IamBatman.")
