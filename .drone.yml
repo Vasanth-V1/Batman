@@ -1,9 +1,15 @@
 kind: pipeline
 type: docker
-name: batman-pipeline
+name: batman-assignment-pipeline
 
 steps:
-- name: task-3-and-4
+- name: task-3-workspace
+  image: alpine
+  commands:
+  - pwd
+  - echo "Batman Workspace Verified" > report.txt
+
+- name: task-4-and-5-run
   image: python:3.9-slim
   commands:
   - ls -la
@@ -14,9 +20,9 @@ steps:
   environment:
     GADGET_NAME: Batarang
   commands:
-  - echo "Testing gadget: $${GADGET_NAME}"
+  - echo "Testing gadget variable $${GADGET_NAME}"
 
 trigger:
   event:
-  - push
-  - cron
+    - push
+    - cron
