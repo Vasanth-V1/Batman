@@ -1,9 +1,9 @@
 kind: pipeline
 type: docker
-name: bat-computer-diagnostics
+name: hello-drone-job
 
 steps:
-- name: internal-tests
-  image: python:3.9-slim
+- name: print-message
+  image: alpine
   commands:
-  - python gadget_test.py
+  - echo "Hello Jenkins"
